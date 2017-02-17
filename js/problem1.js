@@ -28,7 +28,6 @@ function kiteGame(numberOfKites) {
     changeElementText("#numberOfKites", numberOfKites);
     var answer = "";
 
-    // write some code here!
     for (var x = 1; x <= numberOfKites; x += 1){
         if (x % 15 == 0){
             answer += "Peche! Ipo kaate! ";

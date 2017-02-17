@@ -34,3 +34,68 @@
  */
 
 // Write your JavaScript here
+
+function changeElementText(element, answer) {
+    $(element).text(answer);
+}
+
+function fixUrdu(advertisementText) {
+    printOriginalAdvertisement(advertisementText);
+
+    var count = getTotalTextCount(advertisementText);
+
+    var urduTextLength = advertisementText[1].length;
+    var temp = "";
+    for (var x = 0; x < (urduTextLength / 2); x++){
+        temp = advertisementText[1][x];
+        advertisementText[1][x] = advertisementText[1][urduTextLength-1-x];
+        advertisementText[1][urduTextLength-1-x] = temp;
+    }
+
+    printCorrectedAdvertisement(advertisementText);
+    changeElementText("#textCount", count);
+}
+
+// Prints out the original advertisement with each language on its own line
+function printOriginalAdvertisement(advertisementText){
+    var hindiText = "";
+    var urduText = "";
+    var englishText = "";
+
+    for (var x = 0; x < advertisementText[0].length; x++){
+        hindiText += (advertisementText[0][x] + " ");
+    }
+    for (var x = 0; x < advertisementText[1].length; x++){
+        urduText += (advertisementText[1][x] + " ");
+    }
+    for (var x = 0; x < advertisementText[2].length; x++){
+        englishText += (advertisementText[2][x] + " ");
+    }
+
+    changeElementText("#originalHindi", hindiText);
+    changeElementText("#originalUrdu", urduText);
+    changeElementText("#originalEnglish", englishText);
+}
+
+// Prints out the corrected advertisement in one line
+function printCorrectedAdvertisement(advertisementText){
+    var correctedText = "";
+    for (var x = 0; x < advertisementText.length; x++){
+        for (var y = 0; y < advertisementText[x].length; y++){
+            correctedText += (advertisementText[x][y] + " ");
+        }
+    }
+
+    changeElementText("#correctedText", correctedText);
+}
+
+// Gets the total number of words in the advertisement
+function getTotalTextCount(advertisementText){
+    var length = 0;
+
+    for (var x = 0; x < advertisementText.length; x++){
+        length += advertisementText[x].length;
+    }
+
+    return length;
+}

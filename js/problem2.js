@@ -44,14 +44,11 @@ function isTrafficJam(numberOfAutoRickshaws, isAfterEightPm) {
     var answer = "maybe a";
     var MAX_RICKSHAWS = 40;
 
-    // write some code here!
     if (isAfterEightPm){
-        console.log("after 8 pm changing time");
         changeElementText("#beforeOrAfter", "after");
     } else {
         changeElementText("#beforeOrAfter", "before");
     }
-
 
     if (numberOfAutoRickshaws > MAX_RICKSHAWS && !isAfterEightPm){
         answer = "a";
