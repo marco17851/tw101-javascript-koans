@@ -27,3 +27,24 @@
 */
 
 // Write your JavaScript here
+
+function changeElementText(element, answer) {
+    $(element).text(answer);
+}
+
+function countMoney(notesGiven) {
+    changeElementText("#notesGiven", notesGiven);
+    var allowed_notes = [5, 10, 20, 50, 100, 500];
+
+    var totalAmount = 0;
+
+    for (var x = 0; x < allowed_notes.length; x++){
+        if (allowed_notes.includes(notesGiven[x])){
+            totalAmount += notesGiven[x];
+        } else {
+            break;
+        }
+    }
+
+    changeElementText("#totalAmount", totalAmount);
+}
